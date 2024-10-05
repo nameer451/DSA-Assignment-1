@@ -4,12 +4,11 @@
 
 using namespace std;
 
-class Node { // Use PascalCase for class names by convention
+class Node { 
 public:
     unsigned long long data;
     Node* next;
 
-    // Constructor should properly initialize data
     Node(unsigned long long data) : data(data), next(nullptr) {}
 };
 
@@ -31,7 +30,7 @@ public:
             tail = newNode;
         } else {
             tail->next = newNode;
-            tail = newNode; // Update the tail to the new node
+            tail = newNode; 
         }
     }
 
@@ -43,13 +42,13 @@ public:
     }
 
     void generate1024bitNumber() {
-        for (int i = 0; i < 16; i++) { // Only need 16 segments of 64 bits to make 1024 bits
+        for (int i = 0; i < 16; i++) {
             unsigned long long newNum = generate64BitRandom();
-            append(newNum); // append directly takes unsigned long long
+            append(newNum);
         }
     }
 
-    void printList() { // Utility function to print the list contents
+    void printList() { 
         Node* current = head;
         while (current != nullptr) {
             cout << current->data << " ";
