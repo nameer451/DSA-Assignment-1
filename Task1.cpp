@@ -55,18 +55,14 @@ class circularLinkedList{
         do {
             if (loc->process_id == process_id) {
                 if (loc == head && loc == tail) {
-                    // Only one node in the list
                     head = tail = nullptr;
-                } else if (loc == head) {
-                    // Deleting the head node
+                } else if (loc == head) 
                     head = loc->next;
                     tail->next = head;
                 } else if (loc == tail) {
-                    // Deleting the tail node
                     tail = ploc;
                     tail->next = head;
                 } else {
-                    // Deleting a middle node
                     ploc->next = loc->next;
                 }
 
@@ -100,24 +96,24 @@ class circularLinkedList{
         int initial_size = size;
 
         node* loc = head;
-        node* nextNode = nullptr; // This will hold the next node to process
+        node* nextNode = nullptr;
 
         do {
             loc->remaining_time -= run_time;
-            nextNode = loc->next; // Store next node before potentially deleting current
+            nextNode = loc->next; 
 
             if (loc->remaining_time <= 0) {
                 cout << "Process " << loc->process_id << " completed!" << endl;
                 deleteNode(loc->process_id);
-                // Ensure we don't end up with a stale pointer if we just deleted the last node
+    
                 if (isEmpty()) {
                     break;
                 }
             }
 
-            loc = nextNode; // Move to the next node, which was stored before deletion could affect it
+            loc = nextNode; 
             numOfNodesProccessed++;
-        } while (!isEmpty() && (numOfNodesProccessed<initial_size)); // Ensure that the list isn't empty after deletion before comparing to head
+        } while (!isEmpty() && (numOfNodesProccessed<initial_size)); 
     }
 
 };
